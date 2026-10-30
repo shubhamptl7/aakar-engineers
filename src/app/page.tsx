@@ -194,10 +194,13 @@ export default function Home() {
       <section className="py-20 lg:py-24">
         <div className="container-x">
           <Title center kicker="Our Clients" sub="Leading Indian manufacturers have relied on Aakar's equipment and services.">Trusted by industry leaders</Title>
-          <ul className="mt-12 grid grid-cols-3 gap-px overflow-hidden rounded-md border border-line bg-line sm:grid-cols-4 lg:grid-cols-6">
+          <ul className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
             {clientLogos.map(([f, n]) => (
-              <li key={f} className="logo-tile flex h-24 items-center justify-center bg-white p-4 sm:h-28">
-                <Image src={`/images/clients/${f}.jpg`} alt={n} width={160} height={80} className="max-h-16 w-auto object-contain" />
+              <li key={f} className="logo-tile flex flex-col overflow-hidden rounded-md border border-line bg-white transition-shadow hover:shadow-[0_10px_30px_rgba(15,34,54,.10)]">
+                <div className="flex h-28 items-center justify-center px-5 py-4 sm:h-32">
+                  <Image src={`/images/clients/trimmed/${f}.png`} alt={`${n} logo`} width={220} height={110} className="max-h-full w-auto max-w-full object-contain" />
+                </div>
+                <p className="border-t border-line bg-mist px-3 py-2.5 text-center text-[0.95rem] font-semibold leading-tight text-ink">{n}</p>
               </li>
             ))}
           </ul>

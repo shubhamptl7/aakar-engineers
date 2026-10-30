@@ -221,6 +221,7 @@ export const photo = {
   stpAerial: "/images/photos/stp-aerial",
   clarifier: "/images/photos/clarifier-dosing",
   textile: "/images/photos/textile-meerut",
+  spares: "/images/photos/spares-ro-membrane",
 };
 
 export const categoryPhoto: Record<string, { src?: string; alt: string }> = {
@@ -228,7 +229,7 @@ export const categoryPhoto: Record<string, { src?: string; alt: string }> = {
   "water-treatment-plants": { src: photo.ro, alt: "Reverse osmosis water treatment plant with filter vessels" },
   "effluent-sewage-treatment": { src: photo.aeration, alt: "Aeration tank of a sewage treatment plant" },
   "water-treatment-chemicals": { src: photo.clarifier, alt: "Treatment basin walkway with chemical dosing equipment" },
-  spares: { alt: "" },
+  spares: { src: photo.spares, alt: "Layers of a spiral-wound reverse osmosis membrane element" },
 };
 
 /** Numbers shown in the proof strip. Only figures derivable from Aakar's own site. */
@@ -315,7 +316,7 @@ export const whyAakar = [
   { icon: "bolt", t: "Energy-efficient towers", d: "Energy Efficiency Series and Non Blockage Design options on round bottle cooling towers." },
   { icon: "signal", t: "Remote monitoring", d: "RO plants can be monitored and operated remotely by mobile, internet, Wi-Fi or Ethernet." },
   { icon: "wrench", t: "O&M and AMC", d: "Operation & maintenance and annual maintenance contracts for new and existing plants." },
-  { icon: "pin", t: "Support after commissioning", d: "Spares, chemicals and service from the same team that built your plant." },
+  { icon: "shield", t: "Support after commissioning", d: "Spares, chemicals and service from the same team that built your plant." },
 ];
 
 export const steps = [
