@@ -234,10 +234,10 @@ export const categoryPhoto: Record<string, { src?: string; alt: string }> = {
 
 /** Numbers shown in the proof strip. Only figures derivable from Aakar's own site. */
 export const proof = [
-  { n: "30+", l: "Years in cooling & water treatment", sub: "Aakar Engineers est. 1992" },
-  { n: "5–750", l: "TR round bottle tower range", sub: "FRP, induced draft" },
+  { n: "30+", l: "Years of experience", sub: "Aakar Engineers est. 1992" },
+  { n: "24+", l: "Reputed industrial clients", sub: "Textile, pharma, food, engineering" },
   { n: "70+", l: "Products & spares", sub: "Across 5 product families" },
-  { n: "1", l: "Team for equipment, chemicals & O&M", sub: "Single point of responsibility" },
+  { n: "In-house", l: "Design & manufacturing", sub: "Plants built by Aakar" },
 ];
 
 export const solutions = [
@@ -325,3 +325,48 @@ export const steps = [
   { t: "Techno-commercial offer", d: "A proposal with scope, equipment, chemicals and service terms." },
   { t: "Supply, install & support", d: "Manufacture, installation and commissioning, then spares and maintenance." },
 ];
+
+/**
+ * Testimonials: ILLUSTRATIVE quotes written for the website preview (Aakar has no published testimonials yet).
+ * Attributed by role + industry only, never to a real person or a named client company.
+ * Replace with approved client quotes (name, role, company) and set `sample: false` before launch.
+ */
+export type Testimonial = {
+  quote: string; highlight: string; role: string; org: string; industry: string;
+  product: string; productHref: string; outcome: string; photo: string; sample?: boolean;
+};
+export const testimonials: Testimonial[] = [
+  {
+    sample: true, industry: "Textile", role: "Plant Head", org: "Textile processing house, Gujarat",
+    quote: "We replaced our old towers with Aakar's FRP round bottle towers. There has been no corrosion problem since, and when we need a spare or a service visit, the same team handles it.",
+    highlight: "no corrosion problem since", product: "FRP round bottle cooling towers", productHref: "/products/cooling-towers/round-bottle/",
+    outcome: "Cooling towers, spares and service from one supplier", photo: photo.textile,
+  },
+  {
+    sample: true, industry: "Pharmaceutical", role: "Utility Manager", org: "Pharmaceutical formulation plant, Gujarat",
+    quote: "Aakar designed the RO plant around our feed water instead of offering a standard skid. With remote monitoring, my team can check the plant from a phone.",
+    highlight: "designed the RO plant around our feed water", product: "Reverse osmosis plant", productHref: "/products/water-treatment-plants/reverse-osmosis-plant/",
+    outcome: "Custom-designed RO with remote monitoring", photo: photo.ro,
+  },
+  {
+    sample: true, industry: "Chemical", role: "EHS Manager", org: "Speciality chemical manufacturer, Gujarat",
+    quote: "Our effluent plant was always a worry before inspections. Aakar upgraded it and now runs it under an O&M contract, so we have specialists accountable for discharge quality.",
+    highlight: "specialists accountable for discharge quality", product: "ETP upgrade + O&M contract", productHref: "/solutions/operation-maintenance/",
+    outcome: "ETP upgraded and operated by Aakar", photo: photo.aeration,
+  },
+  {
+    sample: true, industry: "Food & beverage", role: "Engineering Manager", org: "Food processing plant, Gujarat",
+    quote: "Their treatment programme for our boiler and cooling towers is simple to follow, and their engineers explain the water reports in plain language.",
+    highlight: "explain the water reports in plain language", product: "Boiler & cooling water chemicals", productHref: "/products/water-treatment-chemicals/",
+    outcome: "One treatment programme for boiler and cooling water", photo: photo.clarifier,
+  },
+  {
+    sample: true, industry: "Engineering", role: "Maintenance Head", org: "Engineering works, Ahmedabad",
+    quote: "Getting the tower, the chemicals and the spares from one company saves us a lot of follow-up. One call, and the problem is owned.",
+    highlight: "One call, and the problem is owned", product: "Cooling tower + chemicals + spares", productHref: "/products/cooling-towers/",
+    outcome: "Single point of responsibility", photo: photo.towersField,
+  },
+];
+
+/** Set to the PDF path (e.g. "/brochure/aakar-engineers-brochure.pdf") once Aakar provides one; until then the brochure is sent on request. */
+export const brochureUrl: string | null = null;

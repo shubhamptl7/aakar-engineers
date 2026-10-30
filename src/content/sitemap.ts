@@ -67,6 +67,7 @@ export const companyTree: PageNode = p("/about/", "About Us", "The Aakar story, 
   p("/about/leadership/", "Leadership"),
   p("/about/mission-vision-values/", "Mission, Vision & Values"),
   p("/clients/", "Clients"),
+  p("/testimonials/", "Testimonials", undefined, true),
   p("/careers/", "Careers"),
 ]);
 

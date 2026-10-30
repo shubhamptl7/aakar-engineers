@@ -57,6 +57,7 @@ export default function Header() {
             </a>
           </div>
           <div className="flex items-center gap-6">
+            <Link href="/#brochure" className="hidden hover:text-white lg:inline">Download Brochure</Link>
             <Link href="/careers/" className="hidden hover:text-white lg:inline">Careers</Link>
             <a href={whatsappLink()} className="font-semibold text-[#7ee2a0] hover:text-white">WhatsApp {site.phones.mobile.display}</a>
           </div>

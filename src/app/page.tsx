@@ -6,15 +6,21 @@ import SolutionTabs from "@/components/SolutionTabs";
 import EnquiryForm from "@/components/EnquiryForm";
 import Icon from "@/components/Icon";
 import DemoNote from "@/components/DemoNote";
-import { categories, categoryPhoto, clientLogos, industryClients, photo, proof, site, steps, whatsappLink, whyAakar } from "@/content/site";
+import HeroSlideshow from "@/components/HeroSlideshow";
+import CountUp from "@/components/CountUp";
+import Reveal from "@/components/Reveal";
+import ClientMarquee from "@/components/ClientMarquee";
+import TestimonialShowcase from "@/components/TestimonialShowcase";
+import BrochureForm from "@/components/BrochureForm";
+import { categories, categoryPhoto, industryClients, photo, proof, site, steps, testimonials, whatsappLink, whyAakar } from "@/content/site";
 
 function Title({ kicker, children, sub, center = false }: { kicker: string; children: React.ReactNode; sub?: string; center?: boolean }) {
   return (
-    <div className={center ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
+    <Reveal className={center ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       <p className="eyebrow">{kicker}</p>
       <h2 className="title-lg mt-3">{children}</h2>
       {sub && <p className="mt-4 text-lg">{sub}</p>}
-    </div>
+    </Reveal>
   );
 }
 
@@ -24,7 +30,7 @@ export default function Home() {
     <>
       {/* HERO: full-bleed installation photo + callback form (industry convention) */}
       <section className="dark relative isolate overflow-hidden bg-navy">
-        <Photo base={photo.hero} widths={[800, 1280, 2400]} alt="Bottle-type FRP cooling towers installed on an industrial site" priority className="absolute inset-0 -z-10 h-full w-full object-cover object-[60%_center]" />
+        <HeroSlideshow />
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy/95 via-navy/80 to-navy/20" />
         <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-navy/70 to-transparent" />
         <div className="container-x grid items-center gap-10 pb-28 pt-14 lg:grid-cols-[1fr_25rem] lg:gap-16 lg:pb-36 lg:pt-24">
@@ -58,7 +64,7 @@ export default function Home() {
               <div key={p.l} className={`border-line p-5 sm:p-7 ${i % 2 ? "border-l" : ""} ${i > 1 ? "border-t lg:border-t-0" : ""} ${i === 2 ? "lg:border-l" : ""}`}>
                 <dt className="sr-only">{p.l}</dt>
                 <dd>
-                  <span className="block text-[2.6rem] font-bold leading-none text-brand [font-family:var(--font-head)] lg:text-[3.2rem]">{p.n}</span>
+                  <CountUp value={p.n} className="block text-[2.6rem] font-bold leading-none text-brand [font-family:var(--font-head)] lg:text-[3.2rem]" />
                   <span className="mt-2 block font-semibold leading-snug text-ink">{p.l}</span>
                   <span className="mt-0.5 block text-[0.88rem] text-muted">{p.sub}</span>
                 </dd>
@@ -190,35 +196,60 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CLIENT LOGOS */}
-      <section className="py-20 lg:py-24">
+      {/* CLIENT LOGOS: two-row marquee */}
+      <section className="overflow-hidden py-20 lg:py-24">
         <div className="container-x">
           <Title center kicker="Our Clients" sub="Leading Indian manufacturers have relied on Aakar's equipment and services.">Trusted by industry leaders</Title>
-          <ul className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-            {clientLogos.map(([f, n]) => (
-              <li key={f} className="logo-tile flex flex-col overflow-hidden rounded-md border border-line bg-white transition-shadow hover:shadow-[0_10px_30px_rgba(15,34,54,.10)]">
-                <div className="flex h-28 items-center justify-center px-5 py-4 sm:h-32">
-                  <Image src={`/images/clients/trimmed/${f}.png`} alt={`${n} logo`} width={220} height={110} className="max-h-full w-auto max-w-full object-contain" />
-                </div>
-                <p className="border-t border-line bg-mist px-3 py-2.5 text-center text-[0.95rem] font-semibold leading-tight text-ink">{n}</p>
-              </li>
-            ))}
-          </ul>
-          <div className="text-center"><DemoNote>Logos are from Aakar&apos;s current Clients page. Confirm each relationship and permission before public launch.</DemoNote></div>
+        </div>
+        <ClientMarquee />
+        <div className="container-x text-center"><DemoNote>Logos are from Aakar&apos;s current Clients page. Confirm each relationship and permission before public launch.</DemoNote></div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="bg-mist py-20 lg:py-28">
+        <div className="container-x">
+          <Title center kicker="Client stories">What our clients say</Title>
+          <TestimonialShowcase />
+          <div className="mt-10 text-center"><Link href="/testimonials/" className="link">Read all client stories</Link></div>
         </div>
       </section>
 
-      {/* WHY AAKAR */}
-      <section className="bg-mist py-20 lg:py-28">
-        <div className="container-x">
-          <Title center kicker="Why choose Aakar">What you get when one team is responsible</Title>
-          <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {whyAakar.map((w) => (
-              <li key={w.t} className="rounded-md bg-white p-7 shadow-[0_2px_0_#dce1e6]">
-                <span className="flex h-12 w-12 items-center justify-center rounded bg-brand/10 text-brand"><Icon name={w.icon} className="h-6 w-6" /></span>
-                <h3 className="mt-5 text-[1.45rem]">{w.t}</h3>
-                <p className="mt-2 text-[0.98rem]">{w.d}</p>
-              </li>
+      {/* WHY HIRE AAKAR: photo band with stat cards (industry pattern) */}
+      <section className="relative">
+        <div className="dark relative isolate overflow-hidden bg-navy pb-40 pt-20 text-center lg:pb-48 lg:pt-24">
+          <Photo base={photo.hero} widths={[800, 1280, 2400]} alt="" className="absolute inset-0 -z-10 h-full w-full object-cover" />
+          <div className="absolute inset-0 -z-10 bg-navy/80" />
+          <Reveal className="container-x">
+            <p className="eyebrow">Why choose Aakar</p>
+            <h2 className="title-lg mt-3 !text-white">Experience you can rely on, <span className="text-brand-soft">since {site.est}</span></h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-white/85">One team that designs, builds, treats and maintains, so you deal with one supplier for your plant&apos;s water.</p>
+          </Reveal>
+        </div>
+        <div className="container-x relative -mt-28 lg:-mt-32">
+          <ul className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">
+            {[
+              { n: "1992", l: "Aakar Engineers founded" },
+              { n: "5", l: "Product families" },
+              { n: "6", l: "Cooling tower types" },
+              { n: "1", l: "Team from design to maintenance" },
+            ].map((x, k) => (
+              <Reveal as="li" key={x.l} delay={k * 90} className="rounded-md border-b-4 border-brand bg-white p-6 text-center shadow-[0_18px_50px_rgba(15,34,54,.16)] lg:p-8">
+                <CountUp value={x.n} className="block text-[2.6rem] font-bold leading-none text-brand [font-family:var(--font-head)] lg:text-[3.4rem]" />
+                <span className="mt-2 block font-semibold text-ink">{x.l}</span>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+        <div className="container-x py-16 lg:py-20">
+          <ul className="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+            {whyAakar.map((w, k) => (
+              <Reveal as="li" key={w.t} delay={(k % 3) * 90} className="flex gap-4">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand text-white"><Icon name={w.icon} className="h-6 w-6" /></span>
+                <div>
+                  <h3 className="text-[1.4rem]">{w.t}</h3>
+                  <p className="mt-1 text-[0.98rem]">{w.d}</p>
+                </div>
+              </Reveal>
             ))}
           </ul>
         </div>
@@ -238,6 +269,22 @@ export default function Home() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      {/* BROCHURE */}
+      <section id="brochure" className="dark scroll-mt-32 bg-navy py-14 text-white lg:py-16">
+        <div className="container-x grid items-center gap-8 lg:grid-cols-[0.9fr_1.6fr] lg:gap-12">
+          <Reveal className="flex items-center gap-5">
+            <span className="flex h-16 w-14 shrink-0 items-center justify-center rounded bg-white text-brand shadow-lg" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M12 12v6M9 15l3 3 3-3"/></svg>
+            </span>
+            <div>
+              <h2 className="text-3xl !text-white">Download our brochure</h2>
+              <p className="mt-1 text-white/80">Products, capabilities and contact details in one PDF to share with your team.</p>
+            </div>
+          </Reveal>
+          <BrochureForm />
         </div>
       </section>
 

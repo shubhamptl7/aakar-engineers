@@ -29,7 +29,7 @@ export default function Footer() {
         <div>
           <h2 className="mb-4 text-lg uppercase tracking-wider text-white">Company</h2>
           <ul className="space-y-2.5">
-            {[["/about/", "About Us"], ["/about/group-companies/", "Group Companies"], ["/industries/", "Industries"], ["/clients/", "Clients"], ["/careers/", "Careers"], ["/contact/", "Contact"]].map(([h, l]) => <li key={h}><Link className={col} href={h}>{l}</Link></li>)}
+            {[["/about/", "About Us"], ["/about/group-companies/", "Group Companies"], ["/industries/", "Industries"], ["/clients/", "Clients"], ["/testimonials/", "Testimonials"], ["/#brochure", "Brochure"], ["/careers/", "Careers"], ["/contact/", "Contact"]].map(([h, l]) => <li key={h}><Link className={col} href={h}>{l}</Link></li>)}
           </ul>
         </div>
         <div>

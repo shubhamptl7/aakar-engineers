@@ -8,7 +8,8 @@ import Icon from "@/components/Icon";
 import DemoNote from "@/components/DemoNote";
 import TowerSilhouette from "@/components/diagrams/TowerSilhouette";
 import CoolingTowerSection, { towerParts } from "@/components/diagrams/CoolingTowerSection";
-import { photo, site, towerTypes, whatsappLink } from "@/content/site";
+import { photo, site, testimonials, towerTypes, whatsappLink } from "@/content/site";
+import Quote from "@/components/Quote";
 
 export const metadata: Metadata = {
   title: "Round Bottle FRP Cooling Tower 5–750 TR | Manufacturer in Ahmedabad",
@@ -122,6 +123,22 @@ export default function RoundBottle() {
               </ul>
             </div>
           </section>
+
+          {/* client quote next to the claim it supports */}
+          {(() => {
+            const q = testimonials.find((t) => t.productHref === "/products/cooling-towers/round-bottle/");
+            return q ? (
+              <figure className="mt-16 rounded-lg border-l-4 border-brand bg-mist p-7 sm:p-9 lg:mt-20">
+                <svg viewBox="0 0 44 34" className="h-8 w-11 text-brand" aria-hidden="true"><path fill="currentColor" d="M0 34V20C0 8.6 6.2 2 18.6 0l1.8 4.6C13.7 6.4 10.4 10 10 15.4h8V34zm24 0V20c0-11.4 6.2-18 18.6-20l1.8 4.6C37.7 6.4 34.4 10 34 15.4h8V34z"/></svg>
+                <blockquote className="mt-4"><Quote text={q.quote} highlight={q.highlight} className="text-[1.3rem] leading-snug text-ink [font-family:var(--font-head)] sm:text-[1.5rem]" /></blockquote>
+                <figcaption className="mt-5 flex flex-wrap items-center justify-between gap-3 text-[0.95rem]">
+                  <span><strong className="text-ink">{q.role}</strong>, {q.org}</span>
+                  <Link href="/testimonials/" className="font-semibold text-water hover:underline">More client stories →</Link>
+                </figcaption>
+                {q.sample && <p className="mt-3 text-[0.8rem] text-muted">Illustrative quote for the website preview.</p>}
+              </figure>
+            ) : null;
+          })()}
 
           {/* gallery */}
           <section className="mt-16 lg:mt-20">
