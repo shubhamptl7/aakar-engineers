@@ -20,7 +20,9 @@
 }
 
 @layer base {
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+@media (min-width: 768px) { html { scroll-padding-top: 7rem; } }
+@media (min-width: 1024px) { html { scroll-padding-top: 7.75rem; } }
 body { color: var(--color-body); background: #fff; font-family: var(--font-sans); font-size: 1.0625rem; line-height: 1.65; -webkit-font-smoothing: antialiased; }
 h1, h2, h3, h4 { color: var(--color-ink); font-family: var(--font-head); font-weight: 600; line-height: 1.12; letter-spacing: 0.002em; }
 :focus-visible { outline: 3px solid var(--color-water); outline-offset: 2px; }

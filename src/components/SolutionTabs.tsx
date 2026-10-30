@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Photo from "./Photo";
 import Icon from "./Icon";
 import { solutions } from "@/content/site";
@@ -9,6 +9,15 @@ import { solutions } from "@/content/site";
 /** Offerings tab list with photo panel: the Thermax "Offerings" pattern, accordion on mobile. */
 export default function SolutionTabs() {
   const [a, setA] = useState(0);
+  const refs = useRef<(HTMLButtonElement | null)[]>([]);
+  const pick = (i: number) => {
+    const mobile = window.matchMedia("(max-width: 1023px)").matches;
+    if (!mobile) return setA(i);
+    // Mobile accordion: tap the open item to close it; opening another scrolls its heading to the top
+    const next = a === i ? -1 : i;
+    setA(next);
+    if (next >= 0) requestAnimationFrame(() => refs.current[next]?.scrollIntoView({ block: "start", behavior: "smooth" }));
+  };
   const Panel = ({ s }: { s: (typeof solutions)[number] }) => (
     <div className="overflow-hidden rounded-md bg-white shadow-[0_10px_40px_rgba(15,34,54,.10)]">
       <div className="relative aspect-[16/8] overflow-hidden bg-mist">
@@ -39,17 +48,18 @@ export default function SolutionTabs() {
               type="button"
               aria-expanded={a === i}
               aria-controls={`sol-${s.id}`}
-              onClick={() => setA(i)}
+              ref={(el) => { refs.current[i] = el; }}
+              onClick={() => pick(i)}
               className={`flex w-full items-center justify-between gap-3 rounded-md border px-5 py-4 text-left text-lg font-semibold uppercase tracking-wide transition-colors [font-family:var(--font-head)] ${a === i ? "border-brand bg-brand text-white" : "border-line bg-white text-ink hover:border-ink"}`}
             >
               {s.name}
-              <span aria-hidden="true" className={`transition-transform ${a === i ? "translate-x-0.5" : ""}`}>→</span>
+              <span aria-hidden="true" className={`transition-transform ${a === i ? "rotate-90 lg:rotate-0" : ""}`}>→</span>
             </button>
             {a === i && <div id={`sol-${s.id}`} className="mt-3 lg:hidden"><Panel s={s} /></div>}
           </li>
         ))}
       </ul>
-      <div className="hidden lg:block" aria-live="polite"><Panel s={solutions[a]} /></div>
+      <div className="hidden lg:block" aria-live="polite"><Panel s={solutions[a] ?? solutions[0]} /></div>
     </div>
   );
 }

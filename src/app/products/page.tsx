@@ -17,9 +17,9 @@ export default function Products() {
     <>
       <PageBanner photo={photo.towersField} alt="Industrial cooling tower" crumbs={[{ href: "/", label: "Home" }, { label: "Products" }]} kicker="Our Products" title="Products built to work together" sub="Cooling towers, treatment plants, chemicals and spares, from one manufacturer in Ahmedabad." />
 
-      <nav aria-label="Product categories" className="sticky top-[4.25rem] z-20 border-b border-line bg-white md:top-[6.75rem] lg:top-[7.5rem]">
-        <ul className="container-x flex gap-1 overflow-x-auto py-3">
-          {categories.map((c) => <li key={c.slug} className="shrink-0"><a href={`#${c.slug}`} className="block rounded px-3.5 py-2 text-[0.95rem] font-semibold text-ink hover:bg-mist">{c.name}</a></li>)}
+      <nav aria-label="Product categories" className="border-b border-line bg-white lg:sticky lg:top-[7.5rem] lg:z-20">
+        <ul className="container-x flex flex-wrap gap-2 py-4 lg:gap-1 lg:py-3">
+          {categories.map((c) => <li key={c.slug}><a href={`#${c.slug}`} className="block rounded border border-line px-3 py-1.5 text-[0.9rem] font-semibold text-ink hover:bg-mist lg:border-transparent lg:px-3.5 lg:py-2 lg:text-[0.95rem]">{c.name}</a></li>)}
         </ul>
       </nav>
 
@@ -27,7 +27,7 @@ export default function Products() {
         {categories.map((c, i) => {
           const ph = categoryPhoto[c.slug];
           return (
-            <section key={c.slug} id={c.slug} className="grid scroll-mt-40 items-center gap-10 py-16 lg:grid-cols-2 lg:gap-16 lg:py-20">
+            <section key={c.slug} id={c.slug} className="grid items-center lg:scroll-mt-16 gap-10 py-16 lg:grid-cols-2 lg:gap-16 lg:py-20">
               <div className={`overflow-hidden rounded-md ${i % 2 ? "lg:order-2" : ""}`}>
                 {ph.src ? (
                   <Photo base={ph.src} alt={ph.alt} sizes="(min-width:1024px) 50vw, 100vw" className="aspect-[4/3] w-full object-cover" />
