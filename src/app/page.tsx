@@ -10,7 +10,8 @@ import HeroSlideshow from "@/components/HeroSlideshow";
 import CountUp from "@/components/CountUp";
 import Reveal from "@/components/Reveal";
 import ClientMarquee from "@/components/ClientMarquee";
-import TestimonialShowcase from "@/components/TestimonialShowcase";
+import FeaturedQuote from "@/components/FeaturedQuote";
+import TestimonialWall from "@/components/TestimonialWall";
 import BrochureForm from "@/components/BrochureForm";
 import { categories, categoryPhoto, industryClients, photo, proof, site, steps, testimonials, whatsappLink, whyAakar } from "@/content/site";
 
@@ -205,13 +206,14 @@ export default function Home() {
         <div className="container-x text-center"><DemoNote>Logos are from Aakar&apos;s current Clients page. Confirm each relationship and permission before public launch.</DemoNote></div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="bg-mist py-20 lg:py-28">
+      {/* TESTIMONIALS: featured quote + scrolling wall */}
+      <section className="overflow-hidden bg-mist py-20 lg:py-28">
         <div className="container-x">
           <Title center kicker="Client stories">What our clients say</Title>
-          <TestimonialShowcase />
-          <div className="mt-10 text-center"><Link href="/testimonials/" className="link">Read all client stories</Link></div>
+          <div className="mt-14"><FeaturedQuote t={testimonials[0]} /></div>
         </div>
+        <div className="mt-16"><TestimonialWall /></div>
+        <div className="container-x mt-10 text-center"><Link href="/testimonials/" className="btn btn-navy">Read all client stories</Link></div>
       </section>
 
       {/* WHY HIRE AAKAR: photo band with stat cards (industry pattern) */}

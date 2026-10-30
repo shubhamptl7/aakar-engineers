@@ -333,7 +333,7 @@ export const steps = [
  */
 export type Testimonial = {
   quote: string; highlight: string; role: string; org: string; industry: string;
-  product: string; productHref: string; outcome: string; photo: string; sample?: boolean;
+  product: string; productHref: string; outcome: string; photo?: string; sample?: boolean;
 };
 export const testimonials: Testimonial[] = [
   {
@@ -365,6 +365,36 @@ export const testimonials: Testimonial[] = [
     quote: "Getting the tower, the chemicals and the spares from one company saves us a lot of follow-up. One call, and the problem is owned.",
     highlight: "One call, and the problem is owned", product: "Cooling tower + chemicals + spares", productHref: "/products/cooling-towers/",
     outcome: "Single point of responsibility", photo: photo.towersField,
+  },
+  {
+    sample: true, industry: "Textile", role: "Process Manager", org: "Textile dyeing unit, Gujarat",
+    quote: "Our dyeing quality depends on consistent soft water. The softening plant Aakar installed has given us that, with very little attention from the shift team.",
+    highlight: "consistent soft water", product: "Water softening plant", productHref: "/products/water-treatment-plants/water-softening-plant/",
+    outcome: "Consistent process water quality",
+  },
+  {
+    sample: true, industry: "Pharmaceutical", role: "Maintenance Manager", org: "API manufacturing unit, Gujarat",
+    quote: "When a membrane housing had to be replaced, Aakar had it ready, so the RO was back on line without a long wait. That kind of spares support matters to us.",
+    highlight: "Aakar had it ready", product: "Spares & accessories", productHref: "/products/spares/",
+    outcome: "Spares support for an installed RO plant",
+  },
+  {
+    sample: true, industry: "Engineering", role: "Factory Owner", org: "Plastics moulding unit, Gujarat",
+    quote: "Our blow-moulding machines need steady cooling water. The Aakar tower has been low-maintenance, and the team explained the sizing clearly before we ordered.",
+    highlight: "explained the sizing clearly", product: "FRP round bottle cooling tower", productHref: "/products/cooling-towers/round-bottle/",
+    outcome: "Cooling for blow-moulding machines",
+  },
+  {
+    sample: true, industry: "Food & beverage", role: "Plant Manager", org: "Ice-cream and dairy unit, Gujarat",
+    quote: "Boiler scaling used to be a regular headache. With Aakar's treatment programme and their engineer's visits, we now plan maintenance instead of reacting to problems.",
+    highlight: "plan maintenance instead of reacting", product: "Boiler water treatment", productHref: "/products/water-treatment-chemicals/",
+    outcome: "Planned instead of reactive boiler maintenance",
+  },
+  {
+    sample: true, industry: "Chemical", role: "Purchase Manager", org: "Chemical manufacturer, Gujarat",
+    quote: "The quotation was clear, what was delivered matched the specification, and I had one contact for equipment, chemicals and follow-up.",
+    highlight: "one contact for equipment, chemicals and follow-up", product: "Request a quotation", productHref: "/contact/",
+    outcome: "Clear scope and a single point of contact",
   },
 ];
 
